@@ -2,14 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/keplr-logo-dark.png">
     <source media="(prefers-color-scheme: light)" srcset="assets/keplr-logo-light.png">
-    <img alt="Keplr" src="assets/keplr-logo-light.png" width="100">
-  </picture>
-</p>
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-word-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="assets/logo-word-light.png">
-    <img alt="Keplr" src="assets/logo-word-light.png" width="150">
+    <img alt="Keplr" src="assets/keplr-logo-light.png">
   </picture>
 </p>
 
