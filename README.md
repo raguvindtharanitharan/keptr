@@ -11,3 +11,5 @@
     <img alt="Keplr" src="assets/logo-word-light.png" width="150">
   </picture>
 </p>
+
+---
