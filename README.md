@@ -5,7 +5,7 @@
     <img alt="Keplr" src="assets/keplr-logo-light.png">
   </picture>
 </p>
-<p align="center" style="margin-top: -10px">
+<p align="center" style="margin-top: -40px">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo-word-dark.png">
     <source media="(prefers-color-scheme: light)" srcset="assets/logo-word-light.png">
