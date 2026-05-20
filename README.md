@@ -1,14 +1,14 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/keplr-logo-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="assets/keplr-logo-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/keplr-logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/keplr-logo-light.png">
     <img alt="Keplr" src="assets/keplr-logo-light.png">
   </picture>
 </p>
 <p align="center" style="margin-top: -40px">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-word-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="assets/logo-word-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-word-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/assets/logo-word-light.png">
     <img alt="Keplr" src="assets/logo-word-light.png" width="120">
   </picture>
 </p>
@@ -16,12 +16,18 @@
 ---
 
 <p align="center">
-  Convert Tableau reports into production-ready React apps — deployed to Vercel in seconds.
+  Migrate Tableau reports to modern ReactJS dashboards — fast.
 </p>
 
 <p align="center">
-  <a href="https://github.com/RaguvindTharanitharan/keplr/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+  <a href="https://www.npmjs.com/package/keplr">
+    <img src="https://img.shields.io/npm/v/keplr.svg" alt="npm version">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+  </a>
+  <a href="https://nodejs.org/">
+    <img src="https://img.shields.io/badge/node-%3E%3D20-brightgreen" alt="Node.js">
   </a>
   <a href="https://github.com/RaguvindTharanitharan/keplr/issues">
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="Contributions Welcome">
@@ -30,17 +36,14 @@
 
 ---
 
-## What is Keplr?
+**keplr** is an open-source Node.js CLI that turns Tableau workbooks (`.twb` / `.twbx`) into clean, AI-readable metadata files today — and runnable React dashboard apps in v0.2.
 
-Keplr is an open-source tool that takes your existing Tableau workbooks and converts them into standalone React applications, then deploys them to Vercel — no Tableau Server license required to share your reports.
+Stop paying per-user Tableau licenses for internal dashboards. Own your code, own your metadata.
 
-## Features
+> **v0.1 (current):** `keplr analyze` produces a canonical metadata file (markdown + YAML) describing the workbook. Human-readable, agent-readable, paste-into-ChatGPT-able.
+> **v0.2 (next):** `keplr migrate` reads that metadata and emits a Vite + React app, deployable anywhere.
 
-- Parse and extract Tableau workbook (`.twb` / `.twbx`) structure
-- Generate a React component tree that mirrors your Tableau layout
-- Preserve charts, filters, and calculated fields
-- One-command deploy to Vercel
-- Zero Tableau Server dependency for viewers
+---
 
 ## How It Works
 
@@ -48,57 +51,161 @@ Keplr is an open-source tool that takes your existing Tableau workbooks and conv
 Tableau Workbook (.twb / .twbx)
         │
         ▼
-   Keplr Parser
+   keplr analyze
         │
         ▼
-  React App (Vite)
+  .model.md  (metadata — markdown + YAML)
         │
         ▼
-  Vercel Deployment
+   keplr migrate  [v0.2]
+        │
+        ▼
+   React App (Vite)
+        │
+        ▼
+  Deploy anywhere
 ```
 
-## Getting Started
+---
 
-> Keplr is in early development. Instructions will be updated as the project matures.
+## ✨ Features
+
+- **Deep Tableau Analysis** — Understand worksheets, dashboards, data sources, fields, and calculations
+- **AI-Ready Metadata** — `.model.md` output is human-readable, LLM-friendly, and paste-into-ChatGPT-able
+- **High-Fidelity Migration** — Map common mark types (bar, line, pie, scatter, tables, etc.) to beautiful React components
+- **Smart Layouts** — Convert Tableau dashboard zones into responsive React grids
+- **Multiple Targets** — Generate Vite + React apps or embeddable components for Next.js
+- **Flexible Data** — Static JSON, API adapters, or live connections
+- **Great Developer Experience** — TypeScript, modern tooling, easy to customize generated code
+
+> **Current status**: v0.1 metadata pipeline ships. `keplr analyze` runs end-to-end on real workbooks. React generation lands in v0.2. Contributions welcome!
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- A Vercel account
+- Node.js 20+
 - A Tableau workbook (`.twb` or `.twbx`)
 
 ### Installation
 
 ```bash
+# Run instantly with npx (recommended while in development)
+npx keplr@latest --help
+
+# Or install globally
 npm install -g keplr
 ```
 
-### Usage
+### Basic Usage
 
 ```bash
-keplr convert my-report.twbx
-keplr deploy
+# Generate the metadata file for a workbook
+keplr analyze ./examples/giving-renewal-summary.twbx
+
+# Output lands next to the input as <name>.model.md
+cat ./examples/giving-renewal-summary.model.md
 ```
 
-## Roadmap
+The generated `.model.md` is a single self-contained file: markdown narrative + fenced YAML blocks. Paste it into any LLM and ask questions about your dashboard, or feed it into `keplr migrate` (v0.2) to generate a React app.
 
-- [ ] Tableau workbook parser
-- [ ] React component generator
-- [ ] Chart rendering layer
-- [ ] Filter and parameter support
-- [ ] Vercel deployment pipeline
-- [ ] CLI tool
-- [ ] Dashboard layout engine
+---
 
-## Contributing
+## 📋 Commands
 
-Contributions are welcome. Please open an issue before submitting a pull request so we can discuss the approach.
+| Command | Description |
+|---|---|
+| `keplr analyze <file>` | Parse a Tableau workbook and write a canonical metadata file (`<name>.model.md`) |
+| `keplr analyze <file> -o <path>` | Custom output path |
+| `keplr migrate <file>` | **[v0.2]** Read the metadata file and generate a Vite + React app. Stub for now — prints a friendly redirect to `analyze`. |
+| `keplr --debug` | Enable debug logging (stack traces on errors) |
+| `keplr --help` | Show all options and examples |
+| `keplr --version` | Print the keplr version |
+
+---
+
+## 🗺️ Roadmap
+
+keplr is a **generic** Tableau-to-React migrator. We get there by shipping working specific cases first and letting real workbooks shape the architecture — not by designing for everything on day one.
+
+| Phase | Goal | Public artifact |
+|-------|------|-----------------|
+| ✅ **v0.1 — The Metadata Wedge** *(shipped 2026-05-20)* | `keplr analyze` → a complete, human+agent-readable metadata file (markdown + YAML) describing the workbook. No React yet. | Blog: *"Your Tableau workbook, now in markdown your AI can read."* |
+| **v0.2 — React Generator + First Real Users** *(next)* | `keplr migrate` reads the metadata file → Vite + React app. 3 outside users surface real-world schema gaps. | Blog: *"What we learned from the first 3 keplr migrations."* |
+| **v0.3 — Multi-Sheet & Layout** | Whole dashboard, not one sheet. Layout zones → responsive React grid. Read-only parameter display. | Demo video + launch tweet. |
+| **v1.0 — Production-Ready Generic** | Confident defaults across the long tail. Calculated fields, live parameters, filters, action links. Stable CLI surface. Plugin interface extracted from v0.3 friction. | Show HN. |
+| **post-v1 — Data Agents & Commercial Layer** *(conditional)* | Data-agent CLI (e.g. `keplr query`) using the metadata layer for conversational Q&A. Plus possible hosted runs / cloud deploy. CLI stays free forever. | TBD. |
+
+**Anti-roadmap (explicit no):** Tableau parity, two-way sync, visual editor, multi-chart-library support before v1.0, SaaS before users.
+
+---
+
+## 🛠️ Development
+
+```bash
+git clone https://github.com/raguvindtharanitharan/keplr-workspace.git
+cd keplr-workspace
+npm install
+
+# Run the CLI in dev mode (TypeScript, no build step)
+npm run dev -- analyze ./examples/giving-renewal-summary.twbx
+
+# Build
+npm run build
+
+# Run the test suite
+npm test
+
+# Link for local global testing
+npm run link
+keplr --version
+```
+
+**Tech decisions we made early**:
+- ESM-only TypeScript (no CJS shims, no `__dirname` hacks)
+- `commander` for the CLI surface
+- `fast-xml-parser` for `.twb` parsing; `adm-zip` for `.twbx` unzip
+- `yaml` (Eemeli Aro) for canonical YAML emission
+- Vitest + real-fixture integration tests (no mocked `.twb` XML)
+- Markdown + YAML as the v0.1 output format — friendly to humans, LLMs, and downstream tooling. Same shape as dbt's docs.
+
+---
+
+## 🤝 Contributing
+
+We're just getting started — this is a fantastic time to shape the project!
+
+- Read [CONTRIBUTING.md](./CONTRIBUTING.md)
+- Look for issues labeled `good first issue` or `parser`
+- The hardest (and most valuable) work is in the Tableau XML parser
+
+Before submitting a pull request, open an issue so we can discuss the approach:
 
 1. Fork the repo
 2. Create a feature branch (`git checkout -b feature/my-feature`)
 3. Commit your changes
 4. Open a pull request
 
-## License
+All contributions are welcome: code, docs, example workbooks, design feedback, or real-world migration stories.
 
-MIT
+---
+
+## 📄 License
+
+MIT © [Raguvind Tharanitharan](https://github.com/raguvindtharanitharan)
+
+---
+
+## 🙏 Acknowledgements
+
+- Inspired by the pain of expensive BI tools and the joy of building in React
+- Tableau's public workbooks and documentation (reverse-engineered with respect)
+- The amazing open-source React visualization community (Recharts, ECharts, Nivo, etc.)
+
+---
+
+**Made with ❤️ for teams tired of vendor lock-in.**
+
+If keplr saves your company money or helps you ship faster, star the repo and tell your friends!
