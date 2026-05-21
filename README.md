@@ -130,13 +130,13 @@ The generated `.model.md` is a single self-contained file: markdown narrative + 
 
 keptr is a **generic** Tableau-to-React migrator. We get there by shipping working specific cases first and letting real workbooks shape the architecture — not by designing for everything on day one.
 
-| Phase | Goal | Public artifact |
-|-------|------|-----------------|
-| ✅ **v0.1 — The Metadata Wedge** *(shipped 2026-05-20)* | `keptr analyze` → a complete, human+agent-readable metadata file (markdown + YAML) describing the workbook. No React yet. | Blog: *"Your Tableau workbook, now in markdown your AI can read."* |
-| **v0.2 — React Generator + First Real Users** *(next)* | `keptr migrate` reads the metadata file → Vite + React app. 3 outside users surface real-world schema gaps. | Blog: *"What we learned from the first 3 keptr migrations."* |
-| **v0.3 — Multi-Sheet & Layout** | Whole dashboard, not one sheet. Layout zones → responsive React grid. Read-only parameter display. | Demo video + launch tweet. |
-| **v1.0 — Production-Ready Generic** | Confident defaults across the long tail. Calculated fields, live parameters, filters, action links. Stable CLI surface. Plugin interface extracted from v0.3 friction. | Show HN. |
-| **post-v1 — Data Agents & Commercial Layer** *(conditional)* | Data-agent CLI (e.g. `keptr query`) using the metadata layer for conversational Q&A. Plus possible hosted runs / cloud deploy. CLI stays free forever. | TBD. |
+| Phase | Goal |
+|-------|------|
+| ✅ **v0.1 — The Metadata Wedge** *(shipped)* | `keptr analyze` → a complete, human+agent-readable metadata file (markdown + YAML) describing the workbook. No React yet. |
+| **v0.2 — React Generator + First Real Users** *(next)* | `keptr migrate` reads the metadata file → Vite + React app. 3 outside users surface real-world schema gaps. |
+| **v0.3 — Multi-Sheet & Layout** | Whole dashboard, not one sheet. Layout zones → responsive React grid. Read-only parameter display. |
+| **v1.0 — Production-Ready Generic** | Confident defaults across the long tail. Calculated fields, live parameters, filters, action links. Stable CLI surface. |
+| **post-v1 — Data Agents & Commercial Layer** *(conditional)* | Data-agent CLI (e.g. `keptr query`) using the metadata layer for conversational Q&A. Plus possible hosted runs / cloud deploy. CLI stays free forever. |
 
 **Anti-roadmap (explicit no):** Tableau parity, two-way sync, visual editor, multi-chart-library support before v1.0, SaaS before users.
 
