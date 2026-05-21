@@ -1,6 +1,6 @@
 # Examples
 
-Real Tableau workbooks (`.twbx`) used to develop and test **keplr**.
+Real Tableau workbooks (`.twbx`) used to develop and test **kelric**.
 
 ## What this folder is for
 

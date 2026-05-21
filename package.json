@@ -1,11 +1,11 @@
 {
-  "name": "kephra",
-  "version": "0.1.0",
+  "name": "kelric",
+  "version": "0.1.1",
   "description": "CLI tool to migrate Tableau reports into modern ReactJS dashboards",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "kephra": "dist/cli.js"
+    "kelric": "dist/cli.js"
   },
   "files": [
     "dist",

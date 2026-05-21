@@ -1,8 +1,8 @@
-# Contributing to keptr
+# Contributing to kelric
 
-Thank you for your interest in contributing to keptr! 🎉
+Thank you for your interest in contributing to kelric! 🎉
 
-keptr is an open-source CLI that helps people migrate away from expensive Tableau licenses into beautiful, maintainable React dashboards.
+kelric is an open-source CLI that helps people migrate away from expensive Tableau licenses into beautiful, maintainable React dashboards.
 
 ## How to Contribute
 
@@ -10,7 +10,7 @@ keptr is an open-source CLI that helps people migrate away from expensive Tablea
 
 - Use the [GitHub Issues](https://github.com/raguvindtharanitharan/keplr/issues) page
 - Include:
-  - keptr version (`keptr --version`)
+  - kelric version (`kelric --version`)
   - Node.js version
   - Tableau version + sample .twbx (if possible and safe to share)
   - Exact command + full error output

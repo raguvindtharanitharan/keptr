@@ -2,7 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/keplr-logo-dark.png">
     <source media="(prefers-color-scheme: light)" srcset="docs/assets/keplr-logo-light.png">
-    <img alt="Keptr" src="assets/keplr-logo-light.png">
+    <img alt="Kelric" src="assets/keplr-logo-light.png">
   </picture>
 </p>
 <p align="center" style="margin-top: -40px">
@@ -20,8 +20,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/kephra">
-    <img src="https://img.shields.io/npm/v/kephra.svg" alt="npm version">
+  <a href="https://www.npmjs.com/package/kelric">
+    <img src="https://img.shields.io/npm/v/kelric.svg" alt="npm version">
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
@@ -36,12 +36,12 @@
 
 ---
 
-**kephra** is an open-source Node.js CLI that turns Tableau workbooks (`.twb` / `.twbx`) into clean, AI-readable metadata files today — and runnable React dashboard apps in v0.2.
+**kelric** is an open-source Node.js CLI that turns Tableau workbooks (`.twb` / `.twbx`) into clean, AI-readable metadata files today — and runnable React dashboard apps in v0.2.
 
 Stop paying per-user Tableau licenses for internal dashboards. Own your code, own your metadata.
 
-> **v0.1 (current):** `kephra analyze` produces a canonical metadata file (markdown + YAML) describing the workbook. Human-readable, agent-readable, paste-into-ChatGPT-able.
-> **v0.2 (next):** `kephra migrate` reads that metadata and emits a Vite + React app, deployable anywhere.
+> **v0.1 (current):** `kelric analyze` produces a canonical metadata file (markdown + YAML) describing the workbook. Human-readable, agent-readable, paste-into-ChatGPT-able.
+> **v0.2 (next):** `kelric migrate` reads that metadata and emits a Vite + React app, deployable anywhere.
 
 ---
 
@@ -51,13 +51,13 @@ Stop paying per-user Tableau licenses for internal dashboards. Own your code, ow
 Tableau Workbook (.twb / .twbx)
         │
         ▼
-   kephra analyze
+   kelric analyze
         │
         ▼
   .model.md  (metadata — markdown + YAML)
         │
         ▼
-   kephra migrate  [v0.2]
+   kelric migrate  [v0.2]
         │
         ▼
    React App (Vite)
@@ -78,7 +78,7 @@ Tableau Workbook (.twb / .twbx)
 - **Flexible Data** — Static JSON, API adapters, or live connections
 - **Great Developer Experience** — TypeScript, modern tooling, easy to customize generated code
 
-> **Current status**: v0.1 metadata pipeline ships. `kephra analyze` runs end-to-end on real workbooks. React generation lands in v0.2. Contributions welcome!
+> **Current status**: v0.1 metadata pipeline ships. `kelric analyze` runs end-to-end on real workbooks. React generation lands in v0.2. Contributions welcome!
 
 ---
 
@@ -93,23 +93,23 @@ Tableau Workbook (.twb / .twbx)
 
 ```bash
 # Run instantly with npx (recommended while in development)
-npx @raguvind/kephra@latest --help
+npx @raguvind/kelric@latest --help
 
 # Or install globally
-npm install -g @raguvind/kephra
+npm install -g @raguvind/kelric
 ```
 
 ### Basic Usage
 
 ```bash
 # Generate the metadata file for a workbook
-kephra analyze ./examples/giving-renewal-summary.twbx
+kelric analyze ./examples/giving-renewal-summary.twbx
 
 # Output lands next to the input as <name>.model.md
 cat ./examples/giving-renewal-summary.model.md
 ```
 
-The generated `.model.md` is a single self-contained file: markdown narrative + fenced YAML blocks. Paste it into any LLM and ask questions about your dashboard, or feed it into `kephra migrate` (v0.2) to generate a React app.
+The generated `.model.md` is a single self-contained file: markdown narrative + fenced YAML blocks. Paste it into any LLM and ask questions about your dashboard, or feed it into `kelric migrate` (v0.2) to generate a React app.
 
 ---
 
@@ -117,26 +117,26 @@ The generated `.model.md` is a single self-contained file: markdown narrative + 
 
 | Command | Description |
 |---|---|
-| `kephra analyze <file>` | Parse a Tableau workbook and write a canonical metadata file (`<name>.model.md`) |
-| `kephra analyze <file> -o <path>` | Custom output path |
-| `kephra migrate <file>` | **[v0.2]** Read the metadata file and generate a Vite + React app. Stub for now — prints a friendly redirect to `analyze`. |
-| `kephra --debug` | Enable debug logging (stack traces on errors) |
-| `kephra --help` | Show all options and examples |
-| `kephra --version` | Print the kephra version |
+| `kelric analyze <file>` | Parse a Tableau workbook and write a canonical metadata file (`<name>.model.md`) |
+| `kelric analyze <file> -o <path>` | Custom output path |
+| `kelric migrate <file>` | **[v0.2]** Read the metadata file and generate a Vite + React app. Stub for now — prints a friendly redirect to `analyze`. |
+| `kelric --debug` | Enable debug logging (stack traces on errors) |
+| `kelric --help` | Show all options and examples |
+| `kelric --version` | Print the kelric version |
 
 ---
 
 ## 🗺️ Roadmap
 
-kephra is a **generic** Tableau-to-React migrator. We get there by shipping working specific cases first and letting real workbooks shape the architecture — not by designing for everything on day one.
+kelric is a **generic** Tableau-to-React migrator. We get there by shipping working specific cases first and letting real workbooks shape the architecture — not by designing for everything on day one.
 
 | Phase | Goal |
 |-------|------|
-| ✅ **v0.1 — The Metadata Wedge** *(shipped)* | `kephra analyze` → a complete, human+agent-readable metadata file (markdown + YAML) describing the workbook. No React yet. |
-| **v0.2 — React Generator + First Real Users** *(next)* | `kephra migrate` reads the metadata file → Vite + React app. 3 outside users surface real-world schema gaps. |
+| ✅ **v0.1 — The Metadata Wedge** *(shipped)* | `kelric analyze` → a complete, human+agent-readable metadata file (markdown + YAML) describing the workbook. No React yet. |
+| **v0.2 — React Generator + First Real Users** *(next)* | `kelric migrate` reads the metadata file → Vite + React app. 3 outside users surface real-world schema gaps. |
 | **v0.3 — Multi-Sheet & Layout** | Whole dashboard, not one sheet. Layout zones → responsive React grid. Read-only parameter display. |
 | **v1.0 — Production-Ready Generic** | Confident defaults across the long tail. Calculated fields, live parameters, filters, action links. Stable CLI surface. |
-| **post-v1 — Data Agents & Commercial Layer** *(conditional)* | Data-agent CLI (e.g. `kephra query`) using the metadata layer for conversational Q&A. Plus possible hosted runs / cloud deploy. CLI stays free forever. |
+| **post-v1 — Data Agents & Commercial Layer** *(conditional)* | Data-agent CLI (e.g. `kelric query`) using the metadata layer for conversational Q&A. Plus possible hosted runs / cloud deploy. CLI stays free forever. |
 
 **Anti-roadmap (explicit no):** Tableau parity, two-way sync, visual editor, multi-chart-library support before v1.0, SaaS before users.
 
@@ -160,7 +160,7 @@ npm test
 
 # Link for local global testing
 npm run link
-kephra --version
+kelric --version
 ```
 
 **Tech decisions we made early**:
@@ -208,4 +208,4 @@ MIT © [Raguvind Tharanitharan](https://github.com/raguvindtharanitharan)
 
 **Made with ❤️ for teams tired of vendor lock-in.**
 
-If kephra saves your company money or helps you ship faster, star the repo and tell your friends!
+If kelric saves your company money or helps you ship faster, star the repo and tell your friends!
