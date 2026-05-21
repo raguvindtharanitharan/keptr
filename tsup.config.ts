@@ -12,7 +12,7 @@ const sharedConfig = {
   dts: false,
   outDir: 'dist',
   define: {
-    __KEPTR_VERSION__: JSON.stringify(version),
+    __KEPHRA_VERSION__: JSON.stringify(version),
   },
 };
 

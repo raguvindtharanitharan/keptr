@@ -1,11 +1,11 @@
 {
-  "name": "keptr",
+  "name": "kephra",
   "version": "0.1.0",
   "description": "CLI tool to migrate Tableau reports into modern ReactJS dashboards",
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "keptr": "dist/cli.js"
+    "kephra": "dist/cli.js"
   },
   "files": [
     "dist",

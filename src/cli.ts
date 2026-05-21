@@ -9,19 +9,19 @@ import { parseWorkbook } from './parsers/index.js';
 import { generateMarkdownModel } from './generators/index.js';
 import { logger as log } from './utils/logger.js';
 
-declare const __KEPTR_VERSION__: string;
+declare const __KEPHRA_VERSION__: string;
 
 const program = new Command();
 
 program
-  .name('keptr')
+  .name('kephra')
   .description(
     chalk.cyan(
       'Migrate Tableau workbooks (.twb / .twbx) into modern React dashboards.\n' +
         'v0.1 ships the metadata layer; React generation lands in v0.2.'
     )
   )
-  .version(__KEPTR_VERSION__, '-v, --version', 'output the current version')
+  .version(__KEPHRA_VERSION__, '-v, --version', 'output the current version')
   .helpOption('-h, --help', 'display help for command')
   .option('-d, --debug', 'enable debug logging');
 
@@ -33,8 +33,8 @@ program.addHelpText(
   'after',
   `
 ${chalk.bold('Examples:')}
-  $ keptr analyze ./examples/giving-renewal-summary.twbx
-  $ keptr analyze ./report.twbx --output ./report.model.md
+  $ kephra analyze ./examples/giving-renewal-summary.twbx
+  $ kephra analyze ./report.twbx --output ./report.model.md
 
 ${chalk.bold('Learn more:')}
   https://github.com/raguvindtharanitharan/keplr
@@ -96,13 +96,13 @@ program
 program
   .command('migrate <file>')
   .description(
-    "[v0.2] Generate a React app from a workbook. Not yet implemented — try `keptr analyze` for v0.1's metadata output."
+    "[v0.2] Generate a React app from a workbook. Not yet implemented — try `kephra analyze` for v0.1's metadata output."
   )
   .action((file: string) => {
     log.warn(
-      '`keptr migrate` is a v0.2 feature. It will read the metadata file produced by `keptr analyze` and generate a Vite + React app.'
+      '`kephra migrate` is a v0.2 feature. It will read the metadata file produced by `kephra analyze` and generate a Vite + React app.'
     );
-    log.info(`For v0.1, try:    ${chalk.cyan(`keptr analyze ${file}`)}`);
+    log.info(`For v0.1, try:    ${chalk.cyan(`kephra analyze ${file}`)}`);
   });
 
 // ---------------------------------------------------------------------------
