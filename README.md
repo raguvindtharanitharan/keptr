@@ -93,10 +93,10 @@ Tableau Workbook (.twb / .twbx)
 
 ```bash
 # Run instantly with npx (recommended while in development)
-npx @raguvind/kelric@latest --help
+npx kelric@latest --help
 
 # Or install globally
-npm install -g @raguvind/kelric
+npm install -g kelric
 ```
 
 ### Basic Usage
